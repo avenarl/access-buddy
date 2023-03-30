@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,7 @@ export class UserService {
 
   constructor() {}
 
+  // GET
   getUsers(): any[] {
     const users = localStorage.getItem(this.usersKey); // Access usersKey
 
@@ -17,5 +19,13 @@ export class UserService {
     } else {
       return [];
     }
+  }
+
+  // POST
+  createUser(user: User): void {
+    const users = this.getUsers();
+    user.id = new Date().getTime(); // Generate ID based on timestamps
+    users.push(user);
+    localStorage.setItem(this.usersKey, JSON.stringify(users));
   }
 }
