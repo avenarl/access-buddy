@@ -13,5 +13,9 @@ export class UserListComponent {
 
   getUsers(): void {
     this.user = this.userService.getUsers();
+
+    this.userService.userCreated.subscribe((newUser: User) => {
+      this.user.push(newUser);
+    });
   }
 }
