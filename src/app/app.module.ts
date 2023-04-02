@@ -5,9 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserCreateComponent } from './user-create/user-create.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
-  declarations: [AppComponent, UserCreateComponent],
+  declarations: [AppComponent, UserCreateComponent, UserListComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
