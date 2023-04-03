@@ -1,3 +1,7 @@
 <label for="user-list">Find a buddy: </label>
 <input id="user-list" #user placeholder="Ex: Juan" />
 <button (click)="getUsers(user.value)">Find</button>
+<div *ngFor="let user of userList">
+  <p>{{ user.firstName }}</p>
+  <p>{{ user.lastName }}</p>
+</div>
