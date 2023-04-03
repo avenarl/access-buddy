@@ -20,5 +20,14 @@ export class AppComponent {
       mobileNumber: '09123456789',
       address: 'Manila, Philippines',
     },
+    {
+      firstName: 'Jane',
+      lastName: 'Doe',
+      birthDate: '02-02-1991',
+      gender: 'female',
+      email: 'jane@hotmail.com',
+      mobileNumber: '09987654321',
+      address: 'Cebu, Philippines',
+    },
   ];
 }
