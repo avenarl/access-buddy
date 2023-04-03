@@ -10,12 +10,12 @@ import { UserService } from './user.service';
 export class AppComponent {
   title = 'access-buddy';
 
-  userList: UserService[] = [
+  userList: User[] = [
     {
       firstName: 'Juan',
       lastName: 'Dela Cruz',
       birthDate: '01-01-1990',
-      gender: 'Male',
+      gender: 'male',
       email: 'juan@hotmail.com',
       mobileNumber: '09123456789',
       address: 'Manila, Philippines',
