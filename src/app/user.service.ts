@@ -8,8 +8,8 @@ export class UserService {
   users: User[] = [];
   constructor() {}
 
-  createUser(text: any) {
-    this.users.push(text);
+  createUser(users: any) {
+    this.users.push(users);
   }
 
   getUsers() {
