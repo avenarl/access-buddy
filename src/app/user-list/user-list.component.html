@@ -1,1 +1,13 @@
-<p>List</p>
+<!-- list.component.html -->
+<table>
+  <thead>
+    <tr>
+      <th>User List</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user }}</td>
+    </tr>
+  </tbody>
+</table>
