@@ -32,9 +32,20 @@ export class UserService {
   createUser(users: User): void {
     this.users.push(users);
     this.saveToLocalStorage();
+    console.log('NEW USER', users);
   }
 
-  getUsers() {
+  getUsers(): User[] {
     return this.users;
+  }
+
+  // get user by id return null if not found
+  getUserbyId(id: number): User | null {
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].id === id) {
+        return this.users[i];
+      }
+    }
+    return null;
   }
 }
