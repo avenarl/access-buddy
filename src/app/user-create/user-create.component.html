@@ -1,3 +1,42 @@
 <p>Add User</p>
-<input type="text" [(ngModel)]="users" />
-<button (click)="createUser()">Add User</button>
+<form (submit)="createUser()">
+  <!-- Form fields for first name, last name, birth date, gender, email, mobile number, and address -->
+  <label>
+    First Name:
+    <input [(ngModel)]="firstName" name="firstName" required />
+  </label>
+  <label>
+    Last Name:
+    <input [(ngModel)]="lastName" name="lastName" required />
+  </label>
+  <label>
+    Birth Date:
+    <input [(ngModel)]="birthDate" name="birthDate" type="date" required />
+  </label>
+  <label>
+    Gender:
+    <select [(ngModel)]="gender" name="gender" required>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <label>
+    Email:
+    <input [(ngModel)]="email" name="email" type="email" required />
+  </label>
+  <label>
+    Mobile Number:
+    <input
+      [(ngModel)]="mobileNumber"
+      name="mobileNumber"
+      type="number"
+      required
+    />
+  </label>
+  <label>
+    Address:
+    <input [(ngModel)]="address" name="address" required />
+  </label>
+  <button type="submit">Create User</button>
+</form>

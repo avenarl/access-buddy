@@ -29,8 +29,9 @@ export class UserService {
     localStorage.setItem('users', JSON.stringify(this.users));
   }
 
-  createUser(users: any) {
+  createUser(users: User): void {
     this.users.push(users);
+    this.saveToLocalStorage();
   }
 
   getUsers() {

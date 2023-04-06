@@ -7,10 +7,29 @@ import { User } from '../user.model';
   styleUrls: ['./user-create.component.css'],
 })
 export class UserCreateComponent {
-  users: User[] = [];
+  // declare properties to holde the form values
+  firstName: string = '';
+  lastName: string = '';
+  birthDate: Date;
+  gender: 'male' | 'female' | 'other' = 'other';
+  email: string = '';
+  mobileNumber: number;
+  address: string = '';
+
   constructor(private userService: UserService) {}
 
   createUser() {
-    this.userService.createUser(this.users);
+    // this.userService.createUser(this.users);
+    const newUser: User = {
+      id: Date.now(),
+      firstName: this.firstName,
+      lastName: this.lastName,
+      birthDate: this.birthDate,
+      gender: this.gender,
+      email: this.email,
+      mobileNumber: this.mobileNumber,
+      address: this.address,
+    };
+    this.userService.createUser(newUser);
   }
 }
