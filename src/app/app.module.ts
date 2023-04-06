@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserService } from './user.service';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
-  declarations: [AppComponent, UserCreateComponent, UserListComponent],
+  declarations: [AppComponent, UserCreateComponent, UserListComponent, UserEditComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [UserService],
   bootstrap: [AppComponent],
