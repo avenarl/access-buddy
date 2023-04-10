@@ -48,4 +48,19 @@ export class UserService {
     }
     return null;
   }
+
+  // Edit User
+  updateUser(id: number, updatedUser: User) {
+    let index = this.users.findIndex((user) => user.id === id);
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].id === id) {
+        index = i;
+        break;
+      }
+    }
+    if (index !== -1) {
+      this.users[index] = updatedUser;
+      this.saveToLocalStorage();
+    }
+  }
 }
