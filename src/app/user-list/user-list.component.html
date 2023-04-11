@@ -22,7 +22,11 @@
       <td>{{ user.email }}</td>
       <td>{{ user.mobileNumber }}</td>
       <td>{{ user.address }}</td>
-      <td><button (click)="updateUser(user.id)">Edit</button></td>
+      <td>
+        <a [routerLink]="['edit/', user.id]">
+          <button (click)="updateUser(user.id)">Edit</button>
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -9,6 +9,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-edit.component.css'],
 })
 export class UserEditComponent {
+  users: User[] = [];
   constructor(
     private userService: UserService,
     private router: Router,
@@ -16,4 +17,6 @@ export class UserEditComponent {
   ) {}
 
   ngOnInit() {}
+
+  updateUser() {}
 }
