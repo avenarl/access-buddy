@@ -64,7 +64,16 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-    this.users = this.users.filter((user) => user.id !== id);
+    let updatedUser: User[] = [];
+
+    // loop to existing uers
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].id !== id) {
+        updatedUser.push(this.users[i]);
+      }
+    }
+
+    this.users = updatedUser;
     this.saveToLocalStorage();
   }
 }
