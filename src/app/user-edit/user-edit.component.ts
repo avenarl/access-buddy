@@ -9,14 +9,38 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-edit.component.css'],
 })
 export class UserEditComponent {
-  users: User[] = [];
+  user: User = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    birthDate: new Date(),
+    gender: 'other',
+    email: '',
+    mobileNumber: 0,
+    address: '',
+  };
   constructor(
     private userService: UserService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const idParam = this.route.snapshot.paramMap.get('id');
+    let userId: number;
+    // Validate
+    if (idParam) {
+      userId = parseInt(idParam, 10);
+    } else {
+      userId = 0;
+    }
+
+    const foundUser = this.userService.getUserbyId(userId);
+    // Validate
+    if (foundUser) {
+      this.user = foundUser;
+    }
+  }
 
   updateUser() {}
 }
