@@ -21,4 +21,9 @@ export class UserListComponent implements OnInit {
   updateUser(id: number) {
     this.router.navigate(['users', 'edit', id]);
   }
+
+  deleteUser(userId: number) {
+    this.userService.deleteUser(userId); // call method from service
+    this.users = this.userService.getUsers(); // update user list after delete
+  }
 }

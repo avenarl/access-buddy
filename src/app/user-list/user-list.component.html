@@ -26,6 +26,7 @@
         <a [routerLink]="['/users', 'edit', user.id]">
           <button (click)="updateUser(user.id)">Edit</button>
         </a>
+        <button (click)="deleteUser(user.id)">Delete</button>
       </td>
     </tr>
   </tbody>
