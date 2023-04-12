@@ -32,7 +32,6 @@ export class UserService {
   createUser(users: User): void {
     this.users.push(users);
     this.saveToLocalStorage();
-    console.log('NEW USER', users);
   }
 
   getUsers(): User[] {

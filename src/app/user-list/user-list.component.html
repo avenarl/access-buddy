@@ -23,7 +23,7 @@
       <td>{{ user.mobileNumber }}</td>
       <td>{{ user.address }}</td>
       <td>
-        <a [routerLink]="['edit/', user.id]">
+        <a [routerLink]="['/users', 'edit', user.id]">
           <button (click)="updateUser(user.id)">Edit</button>
         </a>
       </td>
