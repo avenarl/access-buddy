@@ -11,6 +11,7 @@ import { UserService } from './user.service';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UserRegisterComponent } from './user-register/user-register.component';
     UserEditComponent,
     UserDeleteComponent,
     UserRegisterComponent,
+    UserLoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [UserService],
