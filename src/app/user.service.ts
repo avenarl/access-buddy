@@ -78,9 +78,15 @@ export class UserService {
   }
 
   authenticateUser(email: string, password: string): User | null {
-    const foundUser = this.users.find(
-      (user) => user.email === email && user.password === password
-    );
-    return foundUser || null;
+    for (let i = 0; i < this.users.length; i++) {
+      if (
+        this.users[i].email === email &&
+        this.users[i].password === password
+      ) {
+        console.log('User found:', this.users[i]);
+        return this.users[i];
+      }
+    }
+    return null;
   }
 }
