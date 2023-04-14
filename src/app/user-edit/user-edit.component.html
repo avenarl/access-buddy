@@ -1,14 +1,42 @@
-<form (ngSubmit)="updateUser()">
-  <input [(ngModel)]="user.firstName" name="firstName" required />
+<p>Edit User</p>
+<form (submit)="updateUser()">
+  <label>
+    First Name:
+    <input [(ngModel)]="user.firstName" name="firstName" required />
+  </label>
+  <label>
+    Last Name:
+    <input [(ngModel)]="user.lastName" name="lastName" required />
+  </label>
+  <label>
+    Birth Date:
+    <input [(ngModel)]="user.birthDate" name="birthDate" type="date" required />
+  </label>
+  <label>
+    Gender:
+    <select [(ngModel)]="user.gender" name="gender" required>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
+  <label>
+    Email:
+    <input [(ngModel)]="user.email" name="email" type="email" required />
+  </label>
+  <label>
+    Mobile Number:
+    <input
+      [(ngModel)]="user.mobileNumber"
+      name="mobileNumber"
+      type="number"
+      required
+    />
+  </label>
+  <label>
+    Address:
+    <input [(ngModel)]="user.address" name="address" required />
+  </label>
 
-  <input [(ngModel)]="user.lastName" name="lasttName" required />
-
-  <input [(ngModel)]="user.birthDate" name="birthDate" required />
-
-  <input [(ngModel)]="user.gender" name="gender" required />
-
-  <input [(ngModel)]="user.email" name="email" required />
-
-  <input [(ngModel)]="user.mobileNumber" name="mobileNumber" required />
   <button type="submit">Save</button>
 </form>

@@ -9,16 +9,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-edit.component.css'],
 })
 export class UserEditComponent {
-  user: User = {
-    id: 0,
-    firstName: '',
-    lastName: '',
-    birthDate: new Date(),
-    gender: 'other',
-    email: '',
-    mobileNumber: 0,
-    address: '',
-  };
+  user: User;
   constructor(
     private userService: UserService,
     private router: Router,

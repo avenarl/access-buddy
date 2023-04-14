@@ -5,14 +5,10 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 
 const routes: Routes = [
-  {
-    path: 'users',
-    component: UserListComponent,
-    children: [
-      { path: 'create', component: UserCreateComponent },
-      { path: 'edit/:id', component: UserEditComponent },
-    ],
-  },
+  { path: 'users', component: UserListComponent },
+  { path: 'users/create', component: UserCreateComponent },
+  { path: 'users/edit/:id', component: UserEditComponent },
+  { path: '', redirectTo: '/users', pathMatch: 'full' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
