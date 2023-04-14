@@ -76,4 +76,11 @@ export class UserService {
     this.users = updatedUser;
     this.saveToLocalStorage();
   }
+
+  authenticateUser(email: string, password: string): User | null {
+    const foundUser = this.users.find(
+      (user) => user.email === email && user.password === password
+    );
+    return foundUser || null;
+  }
 }

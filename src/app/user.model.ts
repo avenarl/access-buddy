@@ -5,6 +5,8 @@ export interface User {
   birthDate: Date;
   gender: 'male' | 'female' | 'other';
   email: string;
+  password: string;
+  role: 'admin' | 'user';
   mobileNumber: number;
   address: string;
 }

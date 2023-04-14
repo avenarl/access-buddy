@@ -13,6 +13,8 @@ export class UserCreateComponent {
   birthDate: Date;
   gender: 'male' | 'female' | 'other' = 'other';
   email: string = '';
+  password: string = '';
+  role: 'admin' | 'user';
   mobileNumber: number;
   address: string = '';
 
@@ -29,6 +31,8 @@ export class UserCreateComponent {
       email: this.email,
       mobileNumber: this.mobileNumber,
       address: this.address,
+      password: this.password, // Add password property
+      role: this.role,
     };
     this.userService.createUser(newUser);
   }
