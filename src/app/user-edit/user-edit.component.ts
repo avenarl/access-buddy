@@ -42,5 +42,8 @@ export class UserEditComponent {
     }
   }
 
-  updateUser() {}
+  updateUser() {
+    this.userService.updateUser(this.user.id, this.user);
+    this.router.navigate(['/users']);
+  }
 }

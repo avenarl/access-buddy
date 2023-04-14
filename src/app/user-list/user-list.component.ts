@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
+  selectedUser: User | null = null;
   constructor(private userService: UserService, private router: Router) {
     this.users = userService.getUsers();
   }
@@ -17,7 +18,9 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.users = this.userService.getUsers();
   }
-
+  showEditForm(users: User) {
+    this.selectedUser = users;
+  }
   updateUser(id: number) {
     this.router.navigate(['users', 'edit', id]);
   }
