@@ -25,6 +25,13 @@
     Email:
     <input [(ngModel)]="email" name="email" type="email" required />
   </label>
+  <label for="password">Password:</label>
+  <input type="password" id="password" #passwordInput />
+  <label for="role">Role:</label>
+  <select id="role" #roleInput>
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+  </select>
   <label>
     Mobile Number:
     <input
