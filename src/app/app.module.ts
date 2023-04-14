@@ -10,6 +10,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserService } from './user.service';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDeleteComponent } from './user-delete/user-delete.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
     UserListComponent,
     UserEditComponent,
     UserDeleteComponent,
+    UserRegisterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [UserService],
