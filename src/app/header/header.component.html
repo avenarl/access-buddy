@@ -1,1 +1,17 @@
-<p>header works!</p>
+<!-- header.component.html -->
+<header>
+  <!-- Show login button if user is not authenticated -->
+  <button *ngIf="!userService.isLoggedIn()" routerLink="/login">Login</button>
+
+  <!-- Show user list link if user is authenticated -->
+  <a *ngIf="userService.isLoggedIn()" routerLink="/users">User List</a>
+
+  <!-- Show admin actions if user is authenticated and has the 'admin' role -->
+  <div
+    *ngIf="
+      userService.isLoggedIn() && userService.currentUserRole() === 'admin'
+    "
+  >
+    <!-- Add admin-specific actions here -->
+  </div>
+</header>
