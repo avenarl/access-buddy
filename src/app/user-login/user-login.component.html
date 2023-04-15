@@ -8,6 +8,6 @@
     <input type="password" id="password" formControlName="password" />
   </div>
   <div>
-    <button *ngIf="!userService.isLoggedIn()" routerLink="/login">Login</button>
+    <button type="submit" [disabled]="!loginForm.valid">Login</button>
   </div>
 </form>
