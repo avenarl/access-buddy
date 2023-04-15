@@ -30,9 +30,14 @@
   </div>
 
   <label for="password">Password:</label>
-  <input type="password" id="password" #passwordInput />
+  <input
+    type="password"
+    id="password"
+    #passwordInput
+    formControlName="password"
+  />
   <label for="role">Role:</label>
-  <select id="role" #roleInput>
+  <select id="role" #roleInput formControlName="role">
     <option value="user">User</option>
     <option value="admin">Admin</option>
   </select>

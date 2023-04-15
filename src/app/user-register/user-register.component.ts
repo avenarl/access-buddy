@@ -18,6 +18,8 @@ export class UserRegisterComponent {
       birthDate: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      role: new FormControl('', Validators.required),
       mobileNumber: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
     });
