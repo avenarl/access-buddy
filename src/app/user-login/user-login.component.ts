@@ -25,6 +25,7 @@ export class UserLoginComponent {
       if (loggedInUser) {
         this.userService.setAuthenticatedUser;
         // store user data in localStorage
+        localStorage.setItem('currentUser', JSON.stringify(loggedInUser));
         this.router.navigate(['/users']);
       } else {
         // error message

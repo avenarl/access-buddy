@@ -1,11 +1,14 @@
-<!-- header.component.html -->
 <header>
   <!-- Show login button if user is not authenticated -->
   <button *ngIf="!userService.isLoggedIn()" routerLink="/login">Login</button>
 
   <!-- Show user list link if user is authenticated -->
-  <a *ngIf="userService.isLoggedIn()" routerLink="/users">User List</a>
-
+  <ng-container *ngIf="userService.isLoggedIn()">
+    <a routerLink="/users">User List</a>
+    <span *ngIf="userService.isLoggedIn()"
+      >Hello, {{ userService.getCurrentUser()?.firstName }}</span
+    >
+  </ng-container>
   <!-- Show admin actions if user is authenticated and has the 'admin' role -->
   <div
     *ngIf="

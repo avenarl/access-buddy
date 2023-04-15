@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user.model';
+import { EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -7,6 +8,7 @@ import { User } from './user.model';
 export class UserService {
   private users: User[] = [];
   private authenticatedUser: User | null = null;
+  userStateChange$: EventEmitter<void> = new EventEmitter<void>();
   constructor() {
     this.loadFromLocalStorage(); // use as backend
   }
@@ -103,7 +105,8 @@ export class UserService {
   }
 
   isLoggedIn(): boolean {
-    return this.authenticatedUser !== null;
+    const currentUser = localStorage.getItem('currentUser');
+    return !!currentUser;
   }
 
   currentUserRole(): string | null {
@@ -112,5 +115,36 @@ export class UserService {
 
   logout() {
     this.removeAuthenticatedUser();
+  }
+  getCurrentUser(): User | null {
+    const userData = localStorage.getItem('currentUser');
+    if (userData) {
+      return JSON.parse(userData);
+    }
+    return null;
+  }
+  getCurrentUserName(): string | null {
+    const currentUser = this.getCurrentUser();
+    if (currentUser) {
+      return `${currentUser.firstName} ${currentUser.lastName}`;
+    }
+    return null;
+  }
+
+  loginUser(users: User) {
+    this.userStateChange$.emit();
+  }
+
+  logoutUser() {
+    this.userStateChange$.emit();
+  }
+
+  getCurrentUserRole(): string | null {
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      const userData = JSON.parse(currentUser);
+      return userData.role;
+    }
+    return null;
   }
 }

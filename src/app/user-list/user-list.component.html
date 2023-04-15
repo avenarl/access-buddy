@@ -1,5 +1,4 @@
 <a routerLink="/users/create" class="create-user-link">Create User</a>
-<a routerLink="/login">Login</a>
 <a routerLink="/register">Register</a>
 <table border="1">
   <thead>
@@ -16,19 +15,23 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{ user.id }}</td>
-      <td>{{ user.firstName }}</td>
-      <td>{{ user.lastName }}</td>
-      <td>{{ user.birthDate | date }}</td>
-      <td>{{ user.gender }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.mobileNumber }}</td>
-      <td>{{ user.address }}</td>
-      <td>
-        <button routerLink="/users/edit/{{ user.id }}">Edit</button>
-        <button (click)="deleteUser(user.id)">Delete</button>
-      </td>
-    </tr>
+    <ng-container *ngIf="userService.isLoggedIn()">
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.birthDate | date }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.mobileNumber }}</td>
+        <td>{{ user.address }}</td>
+        <td>
+          <ng-container *ngIf="userService.getCurrentUserRole() === 'admin'">
+            <button routerLink="/users/edit/{{ user.id }}">Edit</button>
+            <button (click)="deleteUser(user.id)">Delete</button>
+          </ng-container>
+        </td>
+      </tr>
+    </ng-container>
   </tbody>
 </table>

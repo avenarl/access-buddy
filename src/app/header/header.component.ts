@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +8,14 @@ import { UserService } from '../user.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(public userService: UserService) {}
+  constructor(
+    public userService: UserService,
+    private changeDetector: ChangeDetectorRef
+  ) {}
+
+  ngOnInit() {
+    this.userService.userStateChange$.subscribe(() => {
+      this.changeDetector.detectChanges();
+    });
+  }
 }
