@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 export class UserLoginComponent {
   loginForm: FormGroup;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(public userService: UserService, private router: Router) {
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
@@ -23,11 +23,17 @@ export class UserLoginComponent {
       const { email, password } = this.loginForm.value;
       const loggedInUser = this.userService.authenticateUser(email, password);
       if (loggedInUser) {
+        this.userService.setAuthenticatedUser;
         // store user data in localStorage
         this.router.navigate(['/users']);
       } else {
         // error message
       }
     }
+  }
+
+  logoutUser() {
+    this.userService.logout();
+    this.router.navigate(['/login']);
   }
 }

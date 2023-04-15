@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 export class UserEditComponent {
   user: User;
   constructor(
-    private userService: UserService,
+    public userService: UserService,
     private router: Router,
     private route: ActivatedRoute
   ) {}

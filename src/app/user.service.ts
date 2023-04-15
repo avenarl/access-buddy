@@ -6,6 +6,7 @@ import { User } from './user.model';
 })
 export class UserService {
   private users: User[] = [];
+  private authenticatedUser: User | null = null;
   constructor() {
     this.loadFromLocalStorage(); // use as backend
   }
@@ -89,14 +90,27 @@ export class UserService {
     return null;
   }
 
-  // store logged-in user info in localStorage
-  loginUser(user: User) {
-    localStorage.setItem('loggedInUser', JSON.stringify(user));
+  setAuthenticatedUser(user: User): void {
+    this.authenticatedUser = user;
   }
 
-  // validate if user is logged in
+  getAuthenticatedUser(): User | null {
+    return this.authenticatedUser;
+  }
+
+  removeAuthenticatedUser(): void {
+    this.authenticatedUser = null;
+  }
+
   isLoggedIn(): boolean {
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    return !!loggedInUser;
+    return this.authenticatedUser !== null;
+  }
+
+  currentUserRole(): string | null {
+    return this.authenticatedUser ? this.authenticatedUser.role : null;
+  }
+
+  logout() {
+    this.removeAuthenticatedUser();
   }
 }

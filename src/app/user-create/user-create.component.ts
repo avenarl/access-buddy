@@ -18,7 +18,7 @@ export class UserCreateComponent {
   mobileNumber: number;
   address: string = '';
 
-  constructor(private userService: UserService) {}
+  constructor(public userService: UserService) {}
 
   createUser() {
     // this.userService.createUser(this.users);
