@@ -18,7 +18,13 @@
     <ng-container *ngIf="userService.isLoggedIn()">
       <tr *ngFor="let user of users">
         <td>{{ user.id }}</td>
-        <td>{{ user.firstName }}</td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="user.firstName"
+            [readonly]="!canEdit(user)"
+          />
+        </td>
         <td>{{ user.lastName }}</td>
         <td>{{ user.birthDate | date }}</td>
         <td>{{ user.gender }}</td>
@@ -26,9 +32,19 @@
         <td>{{ user.mobileNumber }}</td>
         <td>{{ user.address }}</td>
         <td>
-          <ng-container *ngIf="userService.getCurrentUserRole() === 'admin'">
+          <ng-container
+            *ngIf="
+              userService.getCurrentUserRole() === 'admin' ||
+              userService.getCurrentUserId() === user.id
+            "
+          >
             <button routerLink="/users/edit/{{ user.id }}">Edit</button>
-            <button (click)="deleteUser(user.id)">Delete</button>
+            <button
+              *ngIf="userService.getCurrentUserRole() === 'admin'"
+              (click)="deleteUser(user.id)"
+            >
+              Delete
+            </button>
           </ng-container>
         </td>
       </tr>

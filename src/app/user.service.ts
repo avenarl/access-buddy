@@ -148,4 +148,9 @@ export class UserService {
     }
     return null;
   }
+
+  getCurrentUserId(): number | null {
+    const currentUser = this.getCurrentUser();
+    return currentUser ? currentUser.id : null;
+  }
 }
