@@ -5,6 +5,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { CustomCanActivate } from './guards/custome-can-activate';
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -13,6 +14,11 @@ const routes: Routes = [
   { path: 'register', component: UserRegisterComponent },
   { path: 'login', component: UserLoginComponent },
   { path: '', redirectTo: '/users', pathMatch: 'full' },
+  {
+    path: 'protected',
+    component: ProtectedComponent,
+    canActivate: [CustomCanActivate],
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

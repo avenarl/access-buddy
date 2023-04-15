@@ -83,10 +83,20 @@ export class UserService {
         this.users[i].email === email &&
         this.users[i].password === password
       ) {
-        console.log('User found:', this.users[i]);
         return this.users[i];
       }
     }
     return null;
+  }
+
+  // store logged-in user info in localStorage
+  loginUser(user: User) {
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
+  }
+
+  // validate if user is logged in
+  isLoggedIn(): boolean {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    return !!loggedInUser;
   }
 }
