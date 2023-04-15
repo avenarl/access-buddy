@@ -153,4 +153,18 @@ export class UserService {
     const currentUser = this.getCurrentUser();
     return currentUser ? currentUser.id : null;
   }
+
+  checkDuplicateEmail(email: string, userId?: number): boolean {
+    const users = this.getUsers();
+    let duplicateUser = null;
+
+    for (let i = 0; i < users.length; i++) {
+      const user = users[i];
+      if (user.email === email && (!userId || user.id !== userId)) {
+        duplicateUser = user;
+        break;
+      }
+    }
+    return !!duplicateUser;
+  }
 }
