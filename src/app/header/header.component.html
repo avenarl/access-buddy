@@ -8,6 +8,7 @@
     <span *ngIf="userService.isLoggedIn()"
       >Hello, {{ userService.getCurrentUser()?.firstName }}</span
     >
+    <button *ngIf="userService.isLoggedIn()" (click)="logout()">Logout</button>
   </ng-container>
   <!-- Show admin actions if user is authenticated and has the 'admin' role -->
   <div

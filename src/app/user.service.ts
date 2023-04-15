@@ -137,6 +137,7 @@ export class UserService {
 
   logoutUser() {
     this.userStateChange$.emit();
+    localStorage.removeItem('currentUser');
   }
 
   getCurrentUserRole(): string | null {
