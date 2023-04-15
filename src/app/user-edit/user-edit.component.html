@@ -1,20 +1,20 @@
 <p>Edit User</p>
-<form (submit)="updateUser()">
+<form [formGroup]="form" (ngSubmit)="updateUser()">
   <label>
     First Name:
-    <input [(ngModel)]="user.firstName" name="firstName" required />
+    <input formControlName="firstName" name="firstName" required />
   </label>
   <label>
     Last Name:
-    <input [(ngModel)]="user.lastName" name="lastName" required />
+    <input formControlName="lastName" name="lastName" required />
   </label>
   <label>
     Birth Date:
-    <input [(ngModel)]="user.birthDate" name="birthDate" type="date" required />
+    <input formControlName="birthDate" name="birthDate" type="date" required />
   </label>
   <label>
     Gender:
-    <select [(ngModel)]="user.gender" name="gender" required>
+    <select formControlName="gender" name="gender" required>
       <option value="male">Male</option>
       <option value="female">Female</option>
       <option value="other">Other</option>
@@ -22,19 +22,22 @@
   </label>
   <label>
     Email:
-    <input [(ngModel)]="user.email" name="email" type="email" required />
+    <input formControlName="email" type="email" placeholder="Email" />
+    <div *ngIf="form.get('email')?.errors?.['duplicateEmail']">
+      Email is already taken.
+    </div>
   </label>
   <label for="password">Password:</label>
-  <input type="password" id="password" #passwordInput />
+  <input formControlName="password" type="password" id="password" />
   <label for="role">Role:</label>
-  <select id="role" #roleInput>
+  <select formControlName="role" id="role">
     <option value="user">User</option>
     <option value="admin">Admin</option>
   </select>
   <label>
     Mobile Number:
     <input
-      [(ngModel)]="user.mobileNumber"
+      formControlName="mobileNumber"
       name="mobileNumber"
       type="number"
       required
@@ -42,8 +45,7 @@
   </label>
   <label>
     Address:
-    <input [(ngModel)]="user.address" name="address" required />
+    <input formControlName="address" name="address" required />
   </label>
-
   <button type="submit">Save</button>
 </form>
