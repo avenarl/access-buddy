@@ -26,6 +26,7 @@ export class UserLoginComponent {
         this.userService.setAuthenticatedUser;
         // store user data in localStorage
         localStorage.setItem('currentUser', JSON.stringify(loggedInUser));
+        localStorage.setItem('userRole', loggedInUser.role);
         this.router.navigate(['/users']);
       } else {
         // error message

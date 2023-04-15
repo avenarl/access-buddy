@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../user.model';
 import {
@@ -9,13 +9,14 @@ import {
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-create',
   templateUrl: './user-create.component.html',
   styleUrls: ['./user-create.component.css'],
 })
-export class UserCreateComponent {
+export class UserCreateComponent implements OnInit {
   form: FormGroup;
   firstName: string = '';
   lastName: string = '';
@@ -29,7 +30,8 @@ export class UserCreateComponent {
 
   constructor(
     public userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.form = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -45,6 +47,13 @@ export class UserCreateComponent {
       mobileNumber: ['', Validators.required],
       address: ['', Validators.required],
     });
+  }
+
+  ngOnInit(): void {
+    const userRole = localStorage.getItem('userRole');
+    if (userRole !== 'admin') {
+      this.router.navigate(['/']); // Redirect to the home page or another page
+    }
   }
 
   createUser() {

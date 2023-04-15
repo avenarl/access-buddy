@@ -1,5 +1,5 @@
-<a routerLink="/users/create" class="create-user-link">Create User</a>
-<a routerLink="/register">Register</a>
+<a *ngIf="userRole && userRole === 'admin'" routerLink="">Create User</a>
+<a routerLink="/register" *ngIf="!userService.isLoggedIn()">Register</a>
 <table border="1">
   <thead>
     <tr>

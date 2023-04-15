@@ -133,6 +133,7 @@ export class UserService {
 
   loginUser(users: User) {
     this.userStateChange$.emit();
+    localStorage.setItem('userRole', users.role);
   }
 
   logoutUser() {

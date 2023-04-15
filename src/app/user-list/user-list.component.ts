@@ -10,12 +10,14 @@ import { Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
+  userRole: string;
   constructor(public userService: UserService, private router: Router) {
     this.users = userService.getUsers();
   }
 
   ngOnInit() {
     this.users = this.userService.getUsers();
+    this.userRole = localStorage.getItem('userRole') ?? '';
   }
 
   deleteUser(userId: number) {
