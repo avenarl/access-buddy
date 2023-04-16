@@ -1,6 +1,5 @@
 <header>
   <!-- Show login button if user is not authenticated -->
-  <button *ngIf="!userService.isLoggedIn()" routerLink="/login">Login</button>
 
   <!-- Show user list link if user is authenticated -->
   <ng-container *ngIf="userService.isLoggedIn()">
