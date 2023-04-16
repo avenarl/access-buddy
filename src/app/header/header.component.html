@@ -3,7 +3,6 @@
 
   <!-- Show user list link if user is authenticated -->
   <ng-container *ngIf="userService.isLoggedIn()">
-    <a routerLink="/users">User List</a>
     <span *ngIf="userService.isLoggedIn()"
       >Hello, {{ userService.getCurrentUser()?.firstName }}</span
     >
