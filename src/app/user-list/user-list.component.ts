@@ -21,8 +21,13 @@ export class UserListComponent implements OnInit {
   }
 
   deleteUser(userId: number) {
-    this.userService.deleteUser(userId);
-    this.users = this.userService.getUsers(); // update user list after delete
+    const currentUser = this.userService.getCurrentUser();
+    if (currentUser && currentUser.id === userId) {
+      alert('You cannot delete your own account.');
+    } else {
+      this.userService.deleteUser(userId);
+      this.users = this.userService.getUsers();
+    }
   }
 
   canEdit(user: User): boolean {
