@@ -1,5 +1,18 @@
 <p>Add User</p>
 <form [formGroup]="form" (ngSubmit)="createUser()">
+  <div class="file-upload">
+    <ngx-file-drop
+      (onFileDrop)="onFileDropped($event)"
+      (onFileInvalid)="onFileInvalid($event)"
+    >
+      <div ngx-file-drop-content class="file-upload-content">
+        <img *ngIf="avatarPreview" [src]="avatarPreview" alt="Avatar preview" />
+        <p *ngIf="!avatarPreview">
+          Drag and drop your avatar image here, or click to browse
+        </p>
+      </div>
+    </ngx-file-drop>
+  </div>
   <label>
     First Name:
     <input formControlName="firstName" name="firstName" required />

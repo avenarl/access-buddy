@@ -9,6 +9,11 @@ import {
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
+import {
+  NgxFileDropEntry,
+  FileSystemFileEntry,
+  FileSystemDirectoryEntry,
+} from 'ngx-file-drop';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,6 +23,7 @@ import { Router } from '@angular/router';
 })
 export class UserCreateComponent implements OnInit {
   form: FormGroup;
+  avatarPreview: string | ArrayBuffer | null = null;
   firstName: string = '';
   lastName: string = '';
   birthDate: Date;
@@ -86,5 +92,32 @@ export class UserCreateComponent implements OnInit {
       }
       return null;
     };
+  }
+  // Image upload
+  onFileDropped(files: NgxFileDropEntry[]) {
+    for (const droppedFile of files) {
+      if (droppedFile.fileEntry.isFile) {
+        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
+        fileEntry.file((file: File) => {
+          const fileSize = file.size / 1024 / 1024; // converts bytes to MB
+          if (fileSize <= 5) {
+            // check file size  if <= 5MB
+            const reader = new FileReader();
+            reader.onload = (event: ProgressEvent<FileReader>) => {
+              this.avatarPreview = event.target?.result ?? null;
+            };
+            reader.readAsDataURL(file);
+          } else {
+            alert('Please upload an image smaller than 5MB.');
+          }
+        });
+      } else {
+        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
+        console.log(droppedFile.relativePath, fileEntry);
+      }
+    }
+  }
+  onFileInvalid(errorMessage: string) {
+    alert('Invalid file type. Please upload an image file.');
   }
 }
