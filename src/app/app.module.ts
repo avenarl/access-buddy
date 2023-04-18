@@ -25,13 +25,7 @@ import { HeaderComponent } from './header/header.component';
     UserLoginComponent,
     HeaderComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgxFileDropModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [UserService],
   bootstrap: [AppComponent],
 })
