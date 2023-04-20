@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserRegisterComponent } from './user-register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('UserRegisterComponent', () => {
   let component: UserRegisterComponent;
@@ -8,9 +9,9 @@ describe('UserRegisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserRegisterComponent ]
-    })
-    .compileComponents();
+      declarations: [UserRegisterComponent],
+      imports: [ReactiveFormsModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(UserRegisterComponent);
     component = fixture.componentInstance;
