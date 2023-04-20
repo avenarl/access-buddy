@@ -8,5 +8,5 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'access-buddy';
+  title = 'Access Buddy';
 }
