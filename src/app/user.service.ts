@@ -137,6 +137,7 @@ export class UserService {
   }
 
   logoutUser() {
+    this.authenticatedUser = null;
     this.userStateChange$.emit();
     localStorage.removeItem('currentUser');
   }

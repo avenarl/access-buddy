@@ -99,4 +99,27 @@ describe('UserService', () => {
       updateProfile
     );
   });
+
+  it('should logout a user', () => {
+    spyOn(userService, 'logoutUser').and.callThrough();
+
+    const userLogout: User = {
+      id: 1681562700524,
+      firstName: 'test',
+      lastName: 'test',
+      birthDate: new Date('1990-01-01'),
+      gender: 'male',
+      email: 'test@example.com',
+      mobileNumber: 9123456789,
+      address: '# 123 No Street Place, World',
+      password: 'test',
+      role: 'user',
+    };
+
+    userService.setAuthenticatedUser(userLogout);
+    expect(userService.getAuthenticatedUser()).toEqual(userLogout);
+    userService.logoutUser();
+    expect(userService.logoutUser).toHaveBeenCalled();
+    expect(userService.getAuthenticatedUser()).toBeNull();
+  });
 });
