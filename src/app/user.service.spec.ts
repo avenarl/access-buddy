@@ -78,4 +78,25 @@ describe('UserService', () => {
     userService.loginUser(sampleAdmin);
     expect(userService.loginUser).toHaveBeenCalledWith(sampleAdmin);
   });
+
+  it('user can edit their own profile', () => {
+    spyOn(userService, 'updateUser').and.callThrough();
+    const updateProfile: User = {
+      id: 1,
+      firstName: 'user',
+      lastName: 'user',
+      birthDate: new Date('1990-01-01'),
+      gender: 'male',
+      email: 'admin@example.com',
+      mobileNumber: 9123456789,
+      address: '123 Main St',
+      password: 'password',
+      role: 'user',
+    };
+    userService.updateUser(updateProfile.id, updateProfile);
+    expect(userService.updateUser).toHaveBeenCalledWith(
+      updateProfile.id,
+      updateProfile
+    );
+  });
 });
