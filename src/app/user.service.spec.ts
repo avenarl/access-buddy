@@ -40,4 +40,42 @@ describe('UserService', () => {
     userService.createUser(newUser);
     expect(userService.createUser).toHaveBeenCalledWith(newUser);
   });
+
+  it('should login as user', () => {
+    spyOn(userService, 'loginUser').and.callThrough();
+    const sampleUser: User = {
+      id: 1,
+      firstName: 'John',
+      lastName: 'Doe',
+      birthDate: new Date('1990-01-01'),
+      gender: 'male',
+      email: 'user@example.com',
+      mobileNumber: 9123456789,
+      address: '123 Main St',
+      password: 'password',
+      role: 'user',
+    };
+
+    userService.loginUser(sampleUser);
+    expect(userService.loginUser).toHaveBeenCalledWith(sampleUser);
+  });
+
+  it('should login as admin', () => {
+    spyOn(userService, 'loginUser').and.callThrough();
+    const sampleAdmin: User = {
+      id: 1,
+      firstName: 'Admin',
+      lastName: 'Admin',
+      birthDate: new Date('1990-01-01'),
+      gender: 'male',
+      email: 'admin@example.com',
+      mobileNumber: 9123456789,
+      address: '123 Main St',
+      password: 'password',
+      role: 'admin',
+    };
+
+    userService.loginUser(sampleAdmin);
+    expect(userService.loginUser).toHaveBeenCalledWith(sampleAdmin);
+  });
 });
