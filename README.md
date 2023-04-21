@@ -8,7 +8,6 @@ Access Buddy is a user management app designed to help manage users, their profi
 - Login and logout
 - User profile management (edit and delete)
 - Role-based access control (user and admin)
-- Mobile-friendly design
 
 ## Getting Started
 
